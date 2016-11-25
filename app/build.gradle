@@ -17,10 +17,30 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE-FIREBASE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'lib/arm64-v8a/libcpaJNI.so'
+        exclude 'lib/x86/libsqlcipher.so'
+    }
+
+}
+
+repositories {
+    maven {
+        url "http://proximi-io.bintray.com/proximiio-android"
+    }
+    maven {
+        url "http://indooratlas-ltd.bintray.com/mvn-public"
+    }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'io.proximi.proximiiolibrary:proximiiolibrary:2.3'
+
 }

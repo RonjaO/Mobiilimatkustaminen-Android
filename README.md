@@ -26,3 +26,5 @@ Sovellus
 - Matkan lopetusnapin painamisen jälkeen näytetään äskeisen matkan tiedot: mistä mihin, hinta yms.
 - nappi, josta näkee aiempien matkojen tiedot.
 
+
+
