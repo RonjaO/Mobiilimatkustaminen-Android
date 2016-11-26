@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private ProximiioListener listener;
     
     private final static String TAG = "Mobiilimatkustus";
+    private final static String iphoneBeaconID = "7B44B47B-52A1-5381-90C2-F09B6838C5D4";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +54,11 @@ public class MainActivity extends AppCompatActivity {
             
             @Override
             public void foundBeacon(ProximiioBeacon beacon, boolean registered){
-                Log.d(TAG, "Nähtiin beacon ");
+                Log.d(TAG, "Nähtiin beacon " + beacon.getUUID());
+                
+                if (beacon.getUUID().equals(iphoneBeaconID)) {
+// gotoStartTrip(this);
+                }
                 // //store found beacon's ID and finding time. Send info to server if new.
                 // //if no active trip, notify user to start "trip".
                 // Timestamp timestamp = new Timestamp(System.currentTimeMillis());
@@ -104,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
 
         proximiio.setAuth("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImlzcyI6ImU5NzVkZmE1M2FmMDRlOGFhZGM1MzNjZDVjMWVkYTBkIiwidHlwZSI6ImFwcGxpY2F0aW9uIiwiYXBwbGljYXRpb25faWQiOiI4NWYzYjRmMi1mMjRhLTRiNmUtYjRiMy04MThjNzQyZjNhOTEifQ.Dt6bQHTIZEGUU9kCuc8sUP0CI3AJWOTReoeSW_B1dgs");
         if (proximiio.trySavedLogin()) {
-            Log.d(TAG, "onnistui");
+            Log.d(TAG, "onnistui kirjautumisen tallennus");
         }
     }
 
