@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
             
             @Override
             public void lostBeacon(ProximiioBeacon beacon, boolean registered){
+                
                 // //Store lost beacon's ID and losing time, try to refind the beacon. after a while send info to server.
                 // Timestamp timestamp = new Timestamp(System.currentTimeMillis());
                 // List lost_beacon = new ArrayList(beacon, timestamp);
