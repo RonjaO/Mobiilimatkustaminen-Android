@@ -125,7 +125,6 @@ public class VehicleEnteredNotification {
 
                 .setCategory(Notification.CATEGORY_TRANSPORT)
 
-                .set
                 ;
 
         notify(context, builder.build());
