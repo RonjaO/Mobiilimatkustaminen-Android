@@ -6,6 +6,23 @@
     tools:context="com.bititpoikittain.mobiilimatkustaminen.Activity">
 
     <TextView
+        android:text="Trip bought"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="44dp"
+        android:id="@+id/tripBought"
+        android:textSize="18sp"
+
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:background="#009688"
+        android:textColor="#ffffff"
+        android:padding="4sp"
+        android:textAlignment="center"
+        android:layout_marginLeft="40dp" />
+
+    <TextView
         android:text="You are in"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
