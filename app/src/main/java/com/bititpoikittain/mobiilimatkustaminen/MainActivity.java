@@ -13,6 +13,8 @@ import io.proximi.proximiiolibrary.ProximiioImageCallback;
 import io.proximi.proximiiolibrary.ProximiioListener;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -34,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
         proximiio = ProximiioFactory.getProximiio(this, this);
         listener = new ProximiioListener() {
             
+            List active_beacons = new List();
+            List missing_beacons = new List();
+
             @Override
             public void position(double lat, double lon, double accuracy) {
                 setPosition(lat, lon, accuracy);
@@ -41,16 +46,39 @@ public class MainActivity extends AppCompatActivity {
             
             @Override
             public void foundBeacon(ProximiioBeacon beacon, boolean registered){
-                //store found beacon's ID and finding time. Send info to server.
+                //store found beacon's ID and finding time. Send info to server if new.
                 //if no active trip, notify user to start "trip".
-                //Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+                Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+                boolean contains = false;
+                if (!active_beacons.isEmpty()){
+                    for (int i=0;i<active_beacons.size();i++){
+                        if (active_beacons.get(i).contains(beacon)){
+                            contains=true;
+                        }
+                    }
+                }
+                if (!contains){
+                    List found_beacon = new ArrayList(beacon,timestamp);
+                    active_beacons.add(found_beacon);
+                }
+                //check if found beacon was missing
+                if (!missing_beacons.isEmpty()){
+                    for (int i=0;i<missing_beacons.size();i++){
+                        if (missing_beacons.get(i).contains(beacon)){
+                            missing_beacons.remove(i);
+                        }
+                    }
+                }
             }
             
             @Override
             public void lostBeacon(ProximiioBeacon beacon, boolean registered){
                 //Store lost beacon's ID and losing time, try to refind the beacon. after a while send info to server.
-                //Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+                Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+                List lost_beacon = new ArrayList(beacon, timestamp);
+                missing_beacons.add(lost_beacon);
             }
+            //add function which: sends server info about lost beacon and remove that info from active/missing beacons lists
         };
         proximiio.addListener(listener);
     }
