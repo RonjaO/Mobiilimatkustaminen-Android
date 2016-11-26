@@ -2,10 +2,10 @@
 
 
 
-Sovellus lähettää servirlle 
+Sovellus lähettää serverille 
 - beaconin id:N ja hetken, kun on havainnut sen 
 - käyttäjän hyväksymiset, matkan aloitus/lopetus
-- tiedon kun ei enää näe beaconia 
+- tiedon kun ei enää näe beaconia, beaconin uudelleen etsimisen jälkeen 
 - kysyy matkan hinnan
 
 serveri kertoo sovellukselle:
