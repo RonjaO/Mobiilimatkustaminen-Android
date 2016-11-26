@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.d(TAG, "Nähtiin beacon " + beacon.getUUID());
                 
                 if (beacon.getUUID().equals(iphoneBeaconID)) {
-// gotoStartTrip(this);
+gotoStartTrip(null);
                 }
                 // //store found beacon's ID and finding time. Send info to server if new.
                 // //if no active trip, notify user to start "trip".
