@@ -135,4 +135,10 @@ public class MainActivity extends AppCompatActivity {
     public void showNotification(View view) {
         VehicleEnteredNotification.notify(this);
     }
+
+    // Testing
+    public void showTripEnded(View view) {
+        Intent intent = new Intent(this, TripEndedActivity.class);
+        startActivity(intent);
+    }
 }
