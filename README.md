@@ -28,3 +28,15 @@ Sovellus
 
 
 
+
+
+## Pitchaus-ajatuksia
+
+Sovellus helpottaa matkustamista, koska:
+
+- vyöhykettä ei tarvitse missään vaiheessa valita
+      - sovellus tietää, missä nouset kyytiin ja missä jäät pois
+- maksu veloitetaan matkan jälkeen automaattisesti tililtä
+- matkan aikana näet, missä kohdassa reittiä olet menossa
+- voit saada ilmoituksen, kun lähestyt valitsemaasi pysäkkiä
+
