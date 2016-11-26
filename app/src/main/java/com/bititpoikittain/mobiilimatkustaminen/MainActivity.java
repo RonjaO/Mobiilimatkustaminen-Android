@@ -50,32 +50,18 @@ public class MainActivity extends AppCompatActivity {
                 Log.d(TAG, "Nähtiin beacon " + beacon.getUUID());
                 
                 if (beacon.getUUID().equals(IPHONE_BEACON_ID)) {
-                    if (!action_beacons.isEmpty()) {
-                        if (beaconListContains(action_beacons, beacon)) {
-                            return;
-                        }
+                    if (!action_beacons.contains(beacon)) {
+                        showNotification(null);
+                        action_beacons.add(beacon);
                     }
-                    showNotification(null);
-                    action_beacons.add(beacon);
                 }
-
-                // //store found beacon's ID and finding time. Send info to server if new.
-                // //if no active trip, notify user to start "trip".
-                // Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-                // //check if found beacon was missing
-                // if (!missing_beacons.isEmpty()){
-                //     for (int i=0;i<missing_beacons.size();i++){
-                //         if (missing_beacons.get(i).contains(beacon)){
-                //             missing_beacons.remove(i);
-                //         }
-                //     }
-                // }
             }
             
             @Override
             public void lostBeacon(ProximiioBeacon beacon, boolean registered){
                 if (beacon.getUUID().equals(IPHONE_BEACON_ID)) {
                     showTripEnded(null);
+                    action_beacons.remove(beacon);
                 }
                 // //Store lost beacon's ID and losing time, try to refind the beacon. after a while send info to server.
                 // Timestamp timestamp = new Timestamp(System.currentTimeMillis());
@@ -107,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        proximiio.removeListener(listener);
+        // proximiio.removeListener(listener);
     }
 
     @Override
@@ -131,13 +117,4 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     
-    public boolean beaconListContains(List<ProximiioBeacon> beaconList, ProximiioBeacon beacon) {
-        for (int i = 0; i < beaconList.size(); i++) {
-            if (beaconList.get(i) == beacon) {
-                return true;
-            }
-        }
-        
-        return false;
-    }
 }
