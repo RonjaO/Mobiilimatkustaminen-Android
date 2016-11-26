@@ -20,8 +20,18 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="42dp"
         android:layout_marginTop="39dp"
-        android:id="@+id/button2"
+        android:id="@+id/button3"
         android:layout_below="@+id/textView"
-        android:layout_toEndOf="@+id/textView"
         android:onClick="showNotification" />
+
+    <Button
+        android:text="Show trip end activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:id="@+id/button2"
+        android:onClick="showTripEnded"
+        android:layout_below="@+id/button3"
+        android:layout_alignStart="@+id/button3"
+        android:elevation="24dp" />
 </RelativeLayout>

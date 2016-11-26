@@ -10,14 +10,10 @@ import android.view.View;
 import io.proximi.proximiiolibrary.Proximiio;
 import io.proximi.proximiiolibrary.ProximiioBeacon;
 import io.proximi.proximiiolibrary.ProximiioFactory;
-import io.proximi.proximiiolibrary.ProximiioFloor;
-import io.proximi.proximiiolibrary.ProximiioGeofence;
-import io.proximi.proximiiolibrary.ProximiioImageCallback;
 import io.proximi.proximiiolibrary.ProximiioListener;
 
-import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -26,7 +22,9 @@ public class MainActivity extends AppCompatActivity {
     private ProximiioListener listener;
     
     private final static String TAG = "Mobiilimatkustus";
-    private final static String iphoneBeaconID = "7B44B47B-52A1-5381-90C2-F09B6838C5D4";
+    private final static String IPHONE_BEACON_ID = "7B44B47B-52A1-5381-90C2-F09B6838C5D4";
+    
+    private List<ProximiioBeacon> action_beacons = new ArrayList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,36 +42,26 @@ public class MainActivity extends AppCompatActivity {
     
         listener = new ProximiioListener() {
             
-            // List active_beacons = new ArrayList();
+            // List<ProximiioBeacon> active_beacons = new ArrayList();
             // List missing_beacons = new ArrayList();
-
-            @Override
-            public void position(double lat, double lon, double accuracy) {
-                // setPosition(lat, lon, accuracy);
-            }
             
             @Override
             public void foundBeacon(ProximiioBeacon beacon, boolean registered){
                 Log.d(TAG, "Nähtiin beacon " + beacon.getUUID());
                 
-                if (beacon.getUUID().equals(iphoneBeaconID)) {
+                if (beacon.getUUID().equals(IPHONE_BEACON_ID)) {
+                    if (!action_beacons.isEmpty()) {
+                        if (beaconListContains(action_beacons, beacon)) {
+                            return;
+                        }
+                    }
                     showNotification(null);
+                    action_beacons.add(beacon);
                 }
+
                 // //store found beacon's ID and finding time. Send info to server if new.
                 // //if no active trip, notify user to start "trip".
                 // Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-                // boolean contains = false;
-                // if (!active_beacons.isEmpty()){
-                //     for (int i=0;i<active_beacons.size();i++){
-                //         if (active_beacons.get(i).contains(beacon)){
-                //             contains=true;
-                //         }
-                //     }
-                // }
-                // if (!contains){
-                //     List found_beacon = new ArrayList(beacon,timestamp);
-                //     active_beacons.add(found_beacon);
-                // }
                 // //check if found beacon was missing
                 // if (!missing_beacons.isEmpty()){
                 //     for (int i=0;i<missing_beacons.size();i++){
@@ -86,7 +74,9 @@ public class MainActivity extends AppCompatActivity {
             
             @Override
             public void lostBeacon(ProximiioBeacon beacon, boolean registered){
-                
+                if (beacon.getUUID().equals(IPHONE_BEACON_ID)) {
+                    showTripEnded(null);
+                }
                 // //Store lost beacon's ID and losing time, try to refind the beacon. after a while send info to server.
                 // Timestamp timestamp = new Timestamp(System.currentTimeMillis());
                 // List lost_beacon = new ArrayList(beacon, timestamp);
@@ -132,8 +122,22 @@ public class MainActivity extends AppCompatActivity {
         proximiio.onActivityResult(requestCode, resultCode, data);
     }
 
-    // Testing
     public void showNotification(View view) {
         VehicleEnteredNotification.notify(this);
+    }
+
+    public void showTripEnded(View view) {
+        Intent intent = new Intent(this, TripEndedActivity.class);
+        startActivity(intent);
+    }
+    
+    public boolean beaconListContains(List<ProximiioBeacon> beaconList, ProximiioBeacon beacon) {
+        for (int i = 0; i < beaconList.size(); i++) {
+            if (beaconList.get(i) == beacon) {
+                return true;
+            }
+        }
+        
+        return false;
     }
 }

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.bititpoikittain.mobiilimatkustaminen.Activity">
+
+    <TextView
+        android:text="Trip bought"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="44dp"
+        android:id="@+id/tripBought"
+        android:textSize="18sp"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:background="#009688"
+        android:textColor="#ffffff"
+        android:padding="4sp"
+        android:textAlignment="center"
+        android:layout_marginLeft="40dp" />
+
+    <TextView
+        android:text="You are in"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lastTripHeading"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textAlignment="center"
+        android:layout_marginTop="138sp"
+        android:layout_alignParentTop="true"
+        android:textColor="#000000"
+        android:layout_alignParentStart="true"
+        android:textSize="18sp" />
+
+    <TextView
+        android:text="Train E to Helsinki"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tripEnded"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textAlignment="center"
+        android:layout_below="@+id/lastTripHeading"
+        android:textColor="#000000"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:textColor="#009688"
+        android:text="Next stop: Pasila"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/next_stop"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="18sp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="Notify when approaching station:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/next_stop"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="75sp"
+        android:textColor="#000000"
+        android:id="@+id/notifyStationLabel"
+        android:textSize="18sp" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/notifyStationLabel"
+        android:id="@+id/notifyStation"
+        android:textColor="#000000"
+        android:layout_centerHorizontal="true"
+        android:theme="@style/Base.Widget.AppCompat.Spinner"
+        android:layout_marginLeft="60sp"
+        android:layout_marginRight="60sp"
+        android:layout_marginTop="8sp"
+        android:layout_marginBottom="8sp" />
+
+    <TextView
+        android:textColor="#009688"
+        android:text="Arrives to Helsinki: 18:48"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:id="@+id/arriveTime"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:layout_marginBottom="28dp"
+        android:layout_above="@+id/notifyStationLabel"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

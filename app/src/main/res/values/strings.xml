@@ -15,4 +15,12 @@
 
     <string name="action_share">Share</string>
     <string name="action_reply">Reply</string>
+    <string name="title_activity_trip_active">Trip in progress</string>
+
+    <string-array name="stations">
+        <item>--- No notification ---</item>
+        <item>Helsinki</item>
+        <item>Pasila</item>
+    </string-array>
+
 </resources>
