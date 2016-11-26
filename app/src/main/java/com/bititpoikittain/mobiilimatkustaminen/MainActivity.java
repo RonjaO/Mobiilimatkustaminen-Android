@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.support.annotation.NonNull;
 import android.os.Bundle;
+import android.util.Log;
 
 import io.proximi.proximiiolibrary.Proximiio;
 import io.proximi.proximiiolibrary.ProximiioFactory;
@@ -21,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
 
     private Proximiio proximiio;
     private ProximiioListener listener;
+    
+    private final static String TAG = "Mobiilimatkustus";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +84,12 @@ public class MainActivity extends AppCompatActivity {
             //add function which: sends server info about lost beacon and remove that info from active/missing beacons lists
         };
         proximiio.addListener(listener);
+        
+        proximiio.setAuth("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImlzcyI6ImU5NzVkZmE1M2FmMDRlOGFhZGM1MzNjZDVjMWVkYTBkIiwidHlwZSI6ImFwcGxpY2F0aW9uIiwiYXBwbGljYXRpb25faWQiOiI4NWYzYjRmMi1mMjRhLTRiNmUtYjRiMy04MThjNzQyZjNhOTEifQ.Dt6bQHTIZEGUU9kCuc8sUP0CI3AJWOTReoeSW_B1dgs");
+        
+        if (proximiio.loggedIn()) {
+            Log.d(TAG, "Kirjautuneena proximiioon");
+        }
     }
 
     @Override

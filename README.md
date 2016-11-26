@@ -16,7 +16,7 @@ serveri kertoo sovellukselle:
 
 Sovellus
 - käyttöliittymä
-- bluetooth kommunikaatio
+- bluetooth kommunikaatio (Proximiion kautta)
 
 
 ## Käyttöliittymä:
