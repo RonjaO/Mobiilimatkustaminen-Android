@@ -133,7 +133,8 @@ gotoStartTrip(null);
 
     // Testing
     public void gotoStartTrip(View view) {
-        Intent intent = new Intent(this, StartTripActivity.class);
-        startActivity(intent);
+        VehicleEnteredNotification.notify(this);
+        //Intent intent = new Intent(this, StartTripActivity.class);
+        //startActivity(intent);
     }
 }

@@ -6,7 +6,7 @@
     tools:context="com.bititpoikittain.mobiilimatkustaminen.Activity">
 
     <Button
-        android:text="Start trip"
+        android:text="Buy a trip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/startTrip"
@@ -30,7 +30,7 @@
         android:layout_alignParentStart="true" />
 
     <TextView
-        android:text="A train toward Helsinki"
+        android:text="Train E to Helsinki"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/line_desc"
@@ -38,4 +38,5 @@
         android:textAlignment="center"
         android:layout_below="@+id/you_are_in"
         android:layout_alignParentStart="true" />
+
 </RelativeLayout>
