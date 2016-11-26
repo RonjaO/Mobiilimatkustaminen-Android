@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import io.proximi.proximiiolibrary.Proximiio;
+import io.proximi.proximiiolibrary.ProximiioBeacon;
 import io.proximi.proximiiolibrary.ProximiioFactory;
 import io.proximi.proximiiolibrary.ProximiioFloor;
 import io.proximi.proximiiolibrary.ProximiioGeofence;
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
          
     }
-    
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -89,10 +90,12 @@ public class MainActivity extends AppCompatActivity {
         */
 
         proximiio.setAuth("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImlzcyI6ImU5NzVkZmE1M2FmMDRlOGFhZGM1MzNjZDVjMWVkYTBkIiwidHlwZSI6ImFwcGxpY2F0aW9uIiwiYXBwbGljYXRpb25faWQiOiI4NWYzYjRmMi1mMjRhLTRiNmUtYjRiMy04MThjNzQyZjNhOTEifQ.Dt6bQHTIZEGUU9kCuc8sUP0CI3AJWOTReoeSW_B1dgs");
-        
+
+        /*
         if (proximiio.loggedIn()) {
             Log.d(TAG, "Kirjautuneena proximiioon");
         }
+        */
     }
 
     @Override
