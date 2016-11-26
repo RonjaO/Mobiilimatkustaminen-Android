@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
 
         proximiio = ProximiioFactory.getProximiio(this, this);
+
+        /*
         listener = new ProximiioListener() {
             
             List active_beacons = new ArrayList();
@@ -84,7 +86,8 @@ public class MainActivity extends AppCompatActivity {
             //add function which: sends server info about lost beacon and remove that info from active/missing beacons lists
         };
         proximiio.addListener(listener);
-        
+        */
+
         proximiio.setAuth("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImlzcyI6ImU5NzVkZmE1M2FmMDRlOGFhZGM1MzNjZDVjMWVkYTBkIiwidHlwZSI6ImFwcGxpY2F0aW9uIiwiYXBwbGljYXRpb25faWQiOiI4NWYzYjRmMi1mMjRhLTRiNmUtYjRiMy04MThjNzQyZjNhOTEifQ.Dt6bQHTIZEGUU9kCuc8sUP0CI3AJWOTReoeSW_B1dgs");
         
         if (proximiio.loggedIn()) {
