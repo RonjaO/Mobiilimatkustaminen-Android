@@ -12,6 +12,8 @@ import io.proximi.proximiiolibrary.ProximiioGeofence;
 import io.proximi.proximiiolibrary.ProximiioImageCallback;
 import io.proximi.proximiiolibrary.ProximiioListener;
 
+import java.sql.Timestamp;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,10 +33,23 @@ public class MainActivity extends AppCompatActivity {
 
         proximiio = ProximiioFactory.getProximiio(this, this);
         listener = new ProximiioListener() {
+            
             @Override
             public void position(double lat, double lon, double accuracy) {
-                // Do something with the positioning system.
-                // See ProximiioListener in the docs for all available methods.
+                setPosition(lat, lon, accuracy);
+            }
+            
+            @Override
+            public void foundBeacon(ProximiioBeacon beacon, boolean registered){
+                //store found beacon's ID and finding time. Send info to server.
+                //if no active trip, notify user to start "trip".
+                //Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+            }
+            
+            @Override
+            public void lostBeacon(ProximiioBeacon beacon, boolean registered){
+                //Store lost beacon's ID and losing time, try to refind the beacon. after a while send info to server.
+                //Timestamp timestamp = new Timestamp(System.currentTimeMillis());
             }
         };
         proximiio.addListener(listener);
