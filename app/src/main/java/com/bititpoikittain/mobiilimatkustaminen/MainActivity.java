@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
         proximiio = ProximiioFactory.getProximiio(this, this);
         listener = new ProximiioListener() {
             
-            List active_beacons = new List();
-            List missing_beacons = new List();
+            List active_beacons = new ArrayList();
+            List missing_beacons = new ArrayList();
 
             @Override
             public void position(double lat, double lon, double accuracy) {
