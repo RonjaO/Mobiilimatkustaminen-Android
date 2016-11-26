@@ -35,11 +35,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/next_stop"
-        android:layout_below="@+id/line_desc"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="38sp"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:text="Notify when approaching station:"
@@ -64,5 +63,17 @@
         android:layout_marginRight="60sp"
         android:layout_marginTop="8sp"
         android:layout_marginBottom="8sp" />
+
+    <TextView
+        android:textColor="#009688"
+        android:text="Arrives to Helsinki: 18:48"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:id="@+id/arriveTime"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:layout_marginBottom="28dp"
+        android:layout_above="@+id/notifyStationLabel"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
