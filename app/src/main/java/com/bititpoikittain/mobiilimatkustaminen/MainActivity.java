@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.annotation.NonNull;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import io.proximi.proximiiolibrary.Proximiio;
 import io.proximi.proximiiolibrary.ProximiioBeacon;
@@ -124,5 +125,11 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         proximiio.onActivityResult(requestCode, resultCode, data);
     }
-    
+
+    // Testing
+    public void gotoStartTrip(View view) {
+        Intent intent = new Intent(this, StartTripActivity.class);
+        startActivity(intent);
+        System.out.println("Went to startTripActivity");
+    }
 }

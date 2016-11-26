@@ -13,4 +13,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!" />
+
+    <Button
+        android:text="Go to Start Trip activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="39dp"
+        android:id="@+id/button2"
+        android:layout_below="@+id/textView"
+        android:layout_toEndOf="@+id/textView"
+        android:onClick="gotoStartTrip" />
 </RelativeLayout>
