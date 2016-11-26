@@ -135,6 +135,5 @@ public class MainActivity extends AppCompatActivity {
     public void gotoStartTrip(View view) {
         Intent intent = new Intent(this, StartTripActivity.class);
         startActivity(intent);
-        System.out.println("Went to startTripActivity");
     }
 }
