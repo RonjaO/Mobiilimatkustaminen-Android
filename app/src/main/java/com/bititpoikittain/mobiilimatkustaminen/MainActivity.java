@@ -10,14 +10,7 @@ import android.view.View;
 import io.proximi.proximiiolibrary.Proximiio;
 import io.proximi.proximiiolibrary.ProximiioBeacon;
 import io.proximi.proximiiolibrary.ProximiioFactory;
-import io.proximi.proximiiolibrary.ProximiioFloor;
-import io.proximi.proximiiolibrary.ProximiioGeofence;
-import io.proximi.proximiiolibrary.ProximiioImageCallback;
 import io.proximi.proximiiolibrary.ProximiioListener;
-
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -26,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private ProximiioListener listener;
     
     private final static String TAG = "Mobiilimatkustus";
-    private final static String iphoneBeaconID = "7B44B47B-52A1-5381-90C2-F09B6838C5D4";
+    private final static String IPHONE_BEACON_ID = "7B44B47B-52A1-5381-90C2-F09B6838C5D4";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             public void foundBeacon(ProximiioBeacon beacon, boolean registered){
                 Log.d(TAG, "Nähtiin beacon " + beacon.getUUID());
                 
-                if (beacon.getUUID().equals(iphoneBeaconID)) {
+                if (beacon.getUUID().equals(IPHONE_BEACON_ID)) {
                     showNotification(null);
                 }
                 // //store found beacon's ID and finding time. Send info to server if new.
@@ -86,6 +79,9 @@ public class MainActivity extends AppCompatActivity {
             
             @Override
             public void lostBeacon(ProximiioBeacon beacon, boolean registered){
+                if (beacon.getUUID().equals(IPHONE_BEACON_ID)) {
+                    showTripEnded(null);
+                }
                 // //Store lost beacon's ID and losing time, try to refind the beacon. after a while send info to server.
                 // Timestamp timestamp = new Timestamp(System.currentTimeMillis());
                 // List lost_beacon = new ArrayList(beacon, timestamp);
@@ -131,12 +127,10 @@ public class MainActivity extends AppCompatActivity {
         proximiio.onActivityResult(requestCode, resultCode, data);
     }
 
-    // Testing
     public void showNotification(View view) {
         VehicleEnteredNotification.notify(this);
     }
 
-    // Testing
     public void showTripEnded(View view) {
         Intent intent = new Intent(this, TripEndedActivity.class);
         startActivity(intent);
